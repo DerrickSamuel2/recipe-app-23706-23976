@@ -1,17 +1,26 @@
 {
-  "name": "react-kavia",
-  "version": "0.1.0",
+  "name": "recipe-web-frontend",
+  "version": "1.0.0",
   "private": true,
+  "description": "Recipe App React PWA frontend",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "^5.0.1",
+    "i18next": "^23.11.5",
+    "react-i18next": "^14.1.2",
+    "jwt-decode": "^4.0.0",
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "classnames": "^2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "eslintConfig": {
     "extends": "react-app"

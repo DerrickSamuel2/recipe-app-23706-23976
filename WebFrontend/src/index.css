@@ -1,13 +1,119 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --bg: #ffffff;
+  --bg-2: #f7f7f9;
+  --text: #1a1a1a;
+  --muted: #60646c;
+  --primary: #00a27a;
+  --primary-600:#008765;
+  --accent: #ff7846;
+  --border: #e5e7eb;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+[data-theme="dark"]{
+  --bg: #0f1115;
+  --bg-2: #161a22;
+  --text: #f5f7fb;
+  --muted: #b6bac4;
+  --primary: #1fddae;
+  --primary-600:#1bcaa0;
+  --accent: #ff9f70;
+  --border: #262a33;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:focus { outline: 3px solid var(--accent); outline-offset: 2px; }
+button:focus, input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.container { max-width: 1200px; padding: 1rem; margin: 0 auto; }
+.grid { display: grid; gap: 1rem; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 900px){ .grid-3{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px){ .grid-2, .grid-3{ grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn.warn { background: #ef4444; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+}
+[data-theme="dark"] .input, [data-theme="dark"] .select, [data-theme="dark"] .textarea {
+  background: #0f1115;
+  color: var(--text);
+}
+
+.navbar {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.navbar .nav-content {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto; padding: 0.75rem 1rem;
+}
+.navbar a { margin-right: 1rem; }
+
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem; padding: 2rem 1rem; color: var(--muted);
+}
+
+/* Screen reader utilities */
+.sr-only{ position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip: rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+  background: #111827; color: #f9fafb; padding: 0.75rem 1rem; border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3); z-index: 100;
+}
+
+/* Cooking mode */
+.cooking {
+  padding-top: 3.5rem;
+}
+.cooking .step {
+  font-size: 1.25rem; line-height: 1.6;
+}
+.cooking .controls {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;
+}
+
+/* Meal planner */
+.calendar {
+  display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap: 0.5rem;
+}
+.calendar .day {
+  min-height: 120px; padding: 0.5rem; border: 1px dashed var(--border); border-radius: 10px;
 }
